@@ -39,11 +39,12 @@ using namespace std;
 //}
 
 // Declaring global string variables that will keep their values outside of loops
-string line1, longest_word;
+string line1, longest_word, word, line;
 // Declaring global int variables (and setting applicable ones to zero)
 int max_length = 0;
 int x = 0;
-int long_word_line;
+int long_word_line, length;
+
 
 // Initializing main method
 int main() {
@@ -55,33 +56,27 @@ int main() {
     istringstream numbers(line1);
 
     // Declare a while loop to continue to the end of the file
-    while (!fin.eof()){
-        // Declare the line variable
-        string line;
+    while (!fin.eof()) {
         // Use getline to assign the line to a string
-        getline(fin,line);
+        getline(fin, line);
         // Use istringstream to take the string and parse the individual words
         istringstream words(line);
         // Add a counter that will increment every time getline is run
-        x++;
+        ++x;
         // Use another while loop to go to the end of the line and process each word
-        while (!words.eof()){
-            // Define the word string
-            string word;
+        while (!words.eof()) {
             // Assign each word to the word variable
             words >> word;
             // Assign the length variable
-            int length = word.length();
+            length = word.length();
             // This if statement will continuously assign new values to the variables
             // max_length, longest_word, and long_word_line to keep them stored as they
             // come across relevant values
-            if (max_length < length)
-            {
+            if (max_length < length) {
                 max_length = length;
                 longest_word = word;
                 long_word_line = x;
             }
-
         }
     }
     // Print the results in a pretty manner
